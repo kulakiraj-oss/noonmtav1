@@ -189,7 +189,7 @@
       fill: currentColor;
     }
 
-    /* Monitor + Csatlakozás szekció */
+    /* Monitor kép + Csatlakozás szekció */
     .join-section {
       display: grid;
       grid-template-columns: 1fr 1.2fr;
@@ -198,61 +198,17 @@
       margin: 50px 0;
     }
 
-    /* Pontosított Monitor illusztráció (1. kép alapján) */
     .monitor-wrap {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .monitor-screen {
-      width: 100%;
-      max-width: 390px;
-      height: 230px;
-      background: linear-gradient(125deg, #2b1854 0%, #273b7a 55%, #2b6cb0 100%);
-      border: 9px solid #090a0d;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
       justify-content: center;
-      box-shadow: 0 20px 45px rgba(0,0,0,0.65);
-      position: relative;
+      align-items: center;
     }
 
-    .mta-popup {
-      background: rgba(16, 17, 20, 0.94);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 20px 34px;
-      text-align: center;
-      border-radius: 6px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-    }
-
-    .mta-popup span {
-      display: block;
-      font-size: 0.78rem;
-      color: #a0aec0;
-      margin-bottom: 4px;
-    }
-
-    .mta-popup strong {
-      font-size: 1.05rem;
-      color: #ffffff;
-      font-weight: 700;
-      letter-spacing: 0.3px;
-    }
-
-    .monitor-stand {
-      width: 54px;
-      height: 32px;
-      background: #090a0d;
-    }
-
-    .monitor-base {
-      width: 140px;
-      height: 8px;
-      background: #090a0d;
-      border-radius: 4px;
+    .monitor-img {
+      width: 100%;
+      max-width: 420px;
+      height: auto;
+      object-fit: contain;
     }
 
     .join-card {
@@ -434,14 +390,13 @@
         Közösség
       </a>
       <a href="#csatlakozas">
-        <!-- 2. kép szerinti letöltés ikon -->
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 14H5c-1.1 0-2 .9-2 2v3c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-3c0-1.1-.9-2-2-2zm-2 4.5c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zM13 3h-2v6.17l-2.59-2.58L7 8l5 5 5-5-1.41-1.41L13 9.17V3z"/></svg>
         MTA:SA letöltése
       </a>
     </nav>
   </header>
 
-  <!-- Hero rész a saját logóddal -->
+  <!-- Hero rész -->
   <section class="hero">
     <div class="hero-content">
       <img src="logo.png" alt="NoonMTA Logo" class="hero-logo">
@@ -450,7 +405,7 @@
   </section>
 
   <main class="container">
-    <!-- Nagy sötét kártya a saját logóddal -->
+    <!-- Nagy sötét kártya -->
     <section id="kozosseg" class="status-card">
       <h2>NoonMTA</h2>
       <img src="logo.png" alt="NoonMTA Logo" class="card-logo">
@@ -474,17 +429,10 @@
       </div>
     </section>
 
-    <!-- Csatlakozás a NoonMTA szerverére -->
+    <!-- Csatlakozás a NoonMTA szerverére (csak a monitor.png képpel) -->
     <section id="csatlakozas" class="join-section">
       <div class="monitor-wrap">
-        <div class="monitor-screen">
-          <div class="mta-popup">
-            <span>Loading...</span>
-            <strong>Multi Theft Auto</strong>
-          </div>
-        </div>
-        <div class="monitor-stand"></div>
-        <div class="monitor-base"></div>
+        <img src="monitor.png" alt="Monitor" class="monitor-img">
       </div>
 
       <div class="join-card">
@@ -499,7 +447,6 @@
         </ul>
         <p class="subtitle">Kellemes időtöltést kívánunk!</p>
         <a href="https://multitheftauto.com/" target="_blank" class="btn-green">
-          <!-- 2. kép szerinti letöltés ikon -->
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 14H5c-1.1 0-2 .9-2 2v3c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-3c0-1.1-.9-2-2-2zm-2 4.5c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zM13 3h-2v6.17l-2.59-2.58L7 8l5 5 5-5-1.41-1.41L13 9.17V3z"/></svg>
           MTA:SA letöltése
         </a>
