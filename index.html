@@ -156,7 +156,19 @@
     .player-label {
       color: var(--text-muted);
       font-size: 0.9rem;
-      margin-bottom: 40px;
+      margin-bottom: 10px;
+    }
+
+    .server-ip-box {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 8px 18px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      color: var(--green);
+      font-weight: 600;
+      margin-bottom: 30px;
     }
 
     .social-row {
@@ -391,7 +403,7 @@
       </a>
       <a href="#csatlakozas">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 14H5c-1.1 0-2 .9-2 2v3c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-3c0-1.1-.9-2-2-2zm-2 4.5c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zM13 3h-2v6.17l-2.59-2.58L7 8l5 5 5-5-1.41-1.41L13 9.17V3z"/></svg>
-        MTA:SA letöltése
+        Launcher letöltése
       </a>
     </nav>
   </header>
@@ -412,6 +424,9 @@
 
       <div class="player-count">0</div>
       <div class="player-label">Online játékos</div>
+      
+      <!-- A helyes szerver IP -->
+      <div class="server-ip-box">IP: 87.76.177.187:22003</div>
 
       <div class="social-row">
         <a href="https://discord.gg/erfvVYT95" target="_blank" class="social-item">
@@ -429,7 +444,7 @@
       </div>
     </section>
 
-    <!-- Csatlakozás a NoonMTA szerverére (csak a monitor.png képpel) -->
+    <!-- Csatlakozás és Launcher letöltés -->
     <section id="csatlakozas" class="join-section">
       <div class="monitor-wrap">
         <img src="monitor.png" alt="Monitor" class="monitor-img">
@@ -441,14 +456,14 @@
         <p class="desc">Vágj bele a második életedbe, itt minden lehetséges!</p>
         <ul class="steps-list">
           <li>1. Grand Theft Auto: San Andreas telepítése</li>
-          <li>2. MTA:SA kliens letöltése</li>
-          <li>3. MTA:SA kliens indítása</li>
+          <li>2. NoonMTA launcher letöltése</li>
+          <li>3. Launcher indítása és csatlakozás</li>
           <li>4. NoonMTA szócska begépelése a keresőbe</li>
         </ul>
         <p class="subtitle">Kellemes időtöltést kívánunk!</p>
-        <a href="https://multitheftauto.com/" target="_blank" class="btn-green">
+        <a href="#" class="btn-green">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 14H5c-1.1 0-2 .9-2 2v3c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-3c0-1.1-.9-2-2-2zm-2 4.5c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zM13 3h-2v6.17l-2.59-2.58L7 8l5 5 5-5-1.41-1.41L13 9.17V3z"/></svg>
-          MTA:SA letöltése
+          Launcher letöltése
         </a>
       </div>
     </section>
