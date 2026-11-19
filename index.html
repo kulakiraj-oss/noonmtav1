@@ -81,7 +81,7 @@
       justify-content: center;
       text-align: center;
       padding: 20px;
-      background: 
+      background:
         radial-gradient(circle at 65% 40%, rgba(160, 210, 180, 0.22) 0%, rgba(20, 45, 32, 0.7) 40%, rgba(15, 22, 19, 0.95) 100%),
         linear-gradient(180deg, #132a1e 0%, #181a1f 100%);
     }
@@ -189,7 +189,7 @@
       fill: currentColor;
     }
 
-    /* Monitor kép + Csatlakozás szekció */
+    /* Csatlakozás szekció */
     .join-section {
       display: grid;
       grid-template-columns: 1fr 1.2fr;
@@ -405,7 +405,7 @@
   </section>
 
   <main class="container">
-    <!-- Nagy sötét kártya (IP nélkül, élő játékosszámmal) -->
+    <!-- Élő játékosszám kártya -->
     <section id="kozosseg" class="status-card">
       <h2>NoonMTA</h2>
       <img src="logo.png" alt="NoonMTA Logo" class="card-logo">
@@ -429,7 +429,7 @@
       </div>
     </section>
 
-    <!-- Csatlakozás és Launcher letöltés -->
+    <!-- Csatlakozás szekció -->
     <section id="csatlakozas" class="join-section">
       <div class="monitor-wrap">
         <img src="monitor.png" alt="Monitor" class="monitor-img">
@@ -504,24 +504,52 @@
     </a>
   </footer>
 
-  <!-- Valódi játékosszám lekérdezése a háttérben -->
+  <!-- Élő játékosszám lekérdezése a 87.76.177.187:22003 szerverről -->
   <script>
+    const SERVER_IP = '87.76.177.187';
+    const SERVER_PORT = '22003';
+
+    function kinyerJatekosSzamot(adat) {
+      if (!adat || typeof adat !== 'object') return null;
+
+      if (typeof adat.players === 'number') return adat.players;
+      if (adat.players && typeof adat.players.online === 'number') return adat.players.online;
+      if (typeof adat.currentPlayers === 'number') return adat.currentPlayers;
+      if (typeof adat.numplayers === 'number') return adat.numplayers;
+      if (adat.data && typeof adat.data.players === 'number') return adat.data.players;
+      if (adat.result && typeof adat.result.players === 'number') return adat.result.players;
+
+      return null;
+    }
+
     async function frissitJatekosok() {
       const szamlalo = document.getElementById('online-players');
-      try {
-        // Lekérdezi a szerver adatait az IP megjelenítése nélkül
-        const valasz = await fetch('https://api.mtasa.com/v1/server/87.76.177.187/22003');
-        if (!valasz.ok) throw new Error('Nem elérhető');
-        const adat = await valasz.json();
-        szamlalo.textContent = adat.players !== undefined ? adat.players : '0';
-      } catch (hiba) {
-        // Ha a szerver épp offline vagy a lekérdezés blokkolva van
-        szamlalo.textContent = '0';
+
+      const vegpontok = [
+        `https://api.gametools.network/mtasa/query?ip=${SERVER_IP}&port=${SERVER_PORT}`,
+        `https://api.mtasa.com/v1/server/${SERVER_IP}/${SERVER_PORT}`
+      ];
+
+      for (const url of vegpontok) {
+        try {
+          const valasz = await fetch(url, { cache: 'no-store' });
+          if (!valasz.ok) continue;
+          const adat = await valasz.json();
+          const darab = kinyerJatekosSzamot(adat);
+
+          if (typeof darab === 'number' && !Number.isNaN(darab)) {
+            szamlalo.textContent = String(darab);
+            return;
+          }
+        } catch (hiba) {
+          // Ha az egyik végpont hibát dob vagy blokkolva van, próbáljuk a következőt
+        }
       }
+
+      szamlalo.textContent = '-';
     }
 
     frissitJatekosok();
-    // 30 másodpercenként frissíti a létszámot
     setInterval(frissitJatekosok, 30000);
   </script>
 
